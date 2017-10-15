@@ -1,21 +1,8 @@
-1# Button Blink
-Now that you have looked at blinking the LED from some built in delay, but what if we wanted to control the state of the LED by a button? You may think "Why would I need a Microcontroller to perform the job of a switch?". And that is where you come in. The bare minimum for this part of the lab is to essentially replicate a switch with your development board.
+# Introduction
+This project consisted of writing a program in C to control an MSP430 microprocessor to allow the control of an onboard LED with an onboard button. The program was primarily developed on the MSP430G2553, and was subsequently ported to the other development boards.
 
-# YOU NEED TO CREATE THE FOLLOWING FOLDERS
-* MSP430G2553
-* MSP430F5529
-* MSP430FR2311
-* MSP430FR5994
-* MSP430FR6989
+# Basic Functionality
+The introduction in the main() consists of setting the LED pins to output, and the button pin to input. The input pin is controlled with a pullup resistor, i.e. the default "off" value of the pin is high. When the button is pressed and P1.3 input is asserted low, the LED output is asserted high, turning on the LED. When the button is released, the LED output is asserted low, turning off the LED.
 
-## README
-Remember to replace this README with your README once you are ready to submit. I would recommend either making a copy of this file or taking a screen shot. There might be a copy of all of these README's in a folder on the top level depending on the exercise.
-
-## Extra Work
-What can we do to make this a little bit more worthy of needing a microcontroller.
-
-### Button Based Speed Control
-Much like the UART controlled speed, what if you could cycle between speeds based on a button press? The speed could progress through a cycle of "Off-Slow-Medium-Fast" looping back when you hit the end.
-
-### Color Change
-What if upon a button press, the LED which was blinking changed. Some of the development boards contain two LEDs, so you could swap between a Red and a Green LED.
+# Extra Functionality - Color Select
+In the MSP430G2553 code, there is extra functionality. When the button is pressed, a new variable that determines the selected LED is toggled, and this value is then passed to the LED toggle code. Each time the button is pressed, the selection variable is toggled, alternating between the onboard LEDs.
